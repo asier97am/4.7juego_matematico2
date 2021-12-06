@@ -6,6 +6,155 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btGenerarAleatorio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Generar Random"
+        android:onClick="btGenerarAleatorio"
+        app:layout_constraintBottom_toTopOf="@+id/hor2"
+        app:layout_constraintEnd_toStartOf="@+id/verMiddle"
+        app:layout_constraintStart_toStartOf="@+id/verStart"
+        app:layout_constraintTop_toTopOf="@+id/horStart" />
+
+    <TextView
+        android:id="@+id/tvAlea"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/hor2"
+        app:layout_constraintEnd_toStartOf="@+id/verFin"
+        app:layout_constraintStart_toStartOf="@+id/verMiddle"
+        app:layout_constraintTop_toTopOf="@+id/horStart" />
+
+    <View
+        android:id="@+id/viewComp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.2"
+        android:background="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/verFin"
+        app:layout_constraintStart_toStartOf="@+id/verStart"
+        app:layout_constraintTop_toTopOf="@+id/hor2"
+        app:layout_constraintBottom_toBottomOf="@id/hor6">
+    </View>
+
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Entre qué números es divisible el número?"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/hor3"
+        app:layout_constraintEnd_toStartOf="@+id/verFin"
+        app:layout_constraintStart_toStartOf="@+id/verStart"
+        app:layout_constraintTop_toTopOf="@+id/hor2" />
+
+    <CheckBox
+        android:id="@+id/check_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Es divisible entre 2"
+        app:layout_constraintBottom_toTopOf="@+id/hor4"
+        app:layout_constraintEnd_toStartOf="@+id/verMiddle"
+        app:layout_constraintStart_toStartOf="@+id/verStart"
+        app:layout_constraintTop_toTopOf="@+id/hor3" />
+
+    <CheckBox
+        android:id="@+id/check_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Es divisible entre 3"
+        app:layout_constraintBottom_toTopOf="@+id/hor4"
+        app:layout_constraintEnd_toStartOf="@+id/verFin"
+        app:layout_constraintStart_toStartOf="@+id/verMiddle"
+        app:layout_constraintTop_toTopOf="@+id/hor3" />
+
+    <CheckBox
+        android:id="@+id/check_5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Es divisible entre 5"
+        app:layout_constraintBottom_toTopOf="@+id/hor5"
+        app:layout_constraintEnd_toStartOf="@+id/verMiddle"
+        app:layout_constraintStart_toStartOf="@+id/verStart"
+        app:layout_constraintTop_toTopOf="@+id/hor4"
+        app:layout_constraintVertical_bias="0.523" />
+
+    <CheckBox
+        android:id="@+id/check_10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Es divisible entre 10"
+        app:layout_constraintBottom_toTopOf="@+id/hor5"
+        app:layout_constraintEnd_toStartOf="@+id/verFin"
+        app:layout_constraintStart_toStartOf="@+id/verMiddle"
+        app:layout_constraintTop_toTopOf="@+id/hor4" />
+
+    <CheckBox
+        android:id="@+id/check_nodiv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="No es divisible entre los anteriores numeros"
+        app:layout_constraintBottom_toTopOf="@+id/hor6"
+        app:layout_constraintEnd_toStartOf="@+id/verMiddle"
+        app:layout_constraintStart_toStartOf="@+id/verStart"
+        app:layout_constraintTop_toTopOf="@+id/hor5" />
+
+    <Button
+        android:id="@+id/btComprobar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Comprobar"
+        android:onClick="btcomprobar"
+        app:layout_constraintBottom_toTopOf="@+id/hor6"
+        app:layout_constraintEnd_toStartOf="@+id/verFin"
+        app:layout_constraintStart_toStartOf="@+id/verMiddle"
+        app:layout_constraintTop_toTopOf="@+id/hor5" />
+
+    <TextView
+        android:id="@+id/tvComprobacion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:hint="COMPROBACION"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/hor7"
+        app:layout_constraintEnd_toStartOf="@+id/verFin"
+        app:layout_constraintStart_toStartOf="@+id/verStart"
+        app:layout_constraintTop_toTopOf="@+id/hor6" />
+
+    <ImageView
+        android:id="@+id/KO"
+        android:layout_width="119dp"
+        android:layout_height="112dp"
+        android:layout_gravity="center|right"
+        android:onClick="mostrarKO"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/hor9"
+        app:layout_constraintEnd_toStartOf="@+id/verFin"
+        app:layout_constraintStart_toStartOf="@+id/verStart"
+        app:layout_constraintTop_toTopOf="@+id/hor7"
+        app:srcCompat="@drawable/ic_incorrecto_foreground" />
+    <ImageView
+        android:id="@+id/OK"
+        android:layout_width="119dp"
+        android:layout_height="112dp"
+        android:layout_gravity="center|right"
+        android:onClick="mostrarOK"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/hor9"
+        app:layout_constraintEnd_toStartOf="@+id/verFin"
+        app:layout_constraintStart_toStartOf="@+id/verStart"
+        app:layout_constraintTop_toTopOf="@+id/hor7"
+        app:srcCompat="@drawable/ic_correcto_foreground" />
+    <!--GUIDELINES -->
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verStart"
         android:layout_width="wrap_content"
@@ -95,5 +244,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
