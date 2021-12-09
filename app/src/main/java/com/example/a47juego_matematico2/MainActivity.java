@@ -23,6 +23,23 @@ public class MainActivity extends AppCompatActivity {
     public ImageView KO, OK;
 
     public int aleatorio;
+    String numeroAleatorio;
+
+    public static boolean divisible2(int valorEntero) {
+        return (valorEntero % 2 == 0);
+    }
+    public static boolean divisible3(int valorEntero) {
+        return (valorEntero % 3 == 0);
+    }
+    public static boolean divisible5(int valorEntero) {
+        return (valorEntero % 5 == 0);
+    }
+    public static boolean divisible10(int valorEntero) {
+        return (valorEntero % 10 == 0);
+    }
+    public static boolean noDivisible(int valorEntero) {
+        return ((valorEntero % 2 != 0)&&(valorEntero % 3 != 0)&&(valorEntero % 5 != 0)&&(valorEntero % 10 != 0));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +61,68 @@ public class MainActivity extends AppCompatActivity {
         KO = findViewById(R.id.KO);
         OK = findViewById(R.id.OK);
 
+        btComprobar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean estadoChk1 = check_2.isChecked();
+                boolean estadoChk2 = check_3.isChecked();
+                boolean estadoChk3 = check_5.isChecked();
+                boolean estadoChk4 = check_10.isChecked();
+                boolean estadoChk5 = check_nodiv.isChecked();
+
+                if((estadoChk1==false)&&(estadoChk2==false)&&(estadoChk3==false)&&(estadoChk4==false)&&(estadoChk5==false)){
+                    Toast.makeText(MainActivity.this, "No es divisible entre ninguno", Toast.LENGTH_SHORT).show();
+                }
+                if((divisible2(aleatorio)==true) && (estadoChk1==true)) {
+                    tvComprobacion.setText("Correcto");
+                    OK.setVisibility(View.VISIBLE);
+                    KO.setVisibility(View.INVISIBLE);
+                }else if(((divisible2(aleatorio)==false) && (estadoChk1==true))||((divisible2(aleatorio)==true) && (estadoChk1==false))){
+                    tvComprobacion.setText("Error");
+                    KO.setVisibility(View.VISIBLE);
+                    OK.setVisibility(View.INVISIBLE);
+                }
+
+                if((divisible3(aleatorio)==true) && (estadoChk2==true)) {
+                    tvComprobacion.setText("Correcto");
+                    OK.setVisibility(View.VISIBLE);
+                    KO.setVisibility(View.INVISIBLE);
+                }else if(((divisible3(aleatorio)==false) && (estadoChk2==true))||((divisible3(aleatorio)==true) && (estadoChk2==false))){
+                    tvComprobacion.setText("Error");
+                    KO.setVisibility(View.VISIBLE);
+                    OK.setVisibility(View.INVISIBLE);
+                }
+                if((divisible5(aleatorio)==true) && (estadoChk3==true)) {
+                    tvComprobacion.setText("Correcto");
+                    OK.setVisibility(View.VISIBLE);
+                    KO.setVisibility(View.INVISIBLE);
+                }else if(((divisible5(aleatorio)==false) && (estadoChk3==true))||((divisible5(aleatorio)==true) && (estadoChk3==false))){
+                    tvComprobacion.setText("Error");
+                    KO.setVisibility(View.VISIBLE);
+                    OK.setVisibility(View.INVISIBLE);
+                }
+                if((divisible10(aleatorio)==true) && (estadoChk4==true)) {
+                    tvComprobacion.setText("Correcto");
+                    OK.setVisibility(View.VISIBLE);
+                    KO.setVisibility(View.INVISIBLE);
+                }else if(((divisible10(aleatorio)==false) && (estadoChk4==true))||((divisible10(aleatorio)==true) && (estadoChk4==false))){
+                    tvComprobacion.setText("Error");
+                    KO.setVisibility(View.VISIBLE);
+                    OK.setVisibility(View.INVISIBLE);
+                }
+                if((noDivisible(aleatorio)==true) && (estadoChk5==true)) {
+                    Toast.makeText(MainActivity.this, "No es divisible entre ninguno", Toast.LENGTH_SHORT).show();
+                    tvComprobacion.setText("Correcto");
+                    OK.setVisibility(View.VISIBLE);
+                    KO.setVisibility(View.INVISIBLE);
+                }else if(((noDivisible(aleatorio)==false) && (estadoChk5==true))||((noDivisible(aleatorio)==true) && (estadoChk5==false))){
+                    tvComprobacion.setText("Error");
+                    KO.setVisibility(View.VISIBLE);
+                    OK.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
 
     }
 
@@ -51,95 +130,7 @@ public class MainActivity extends AppCompatActivity {
         int min = 1;
         int max = 10;
         aleatorio = (int) (Math.random() * (max + 1 - min) + min);
-        tvAlea.setText("" + aleatorio);
-
-    }
-
-    public void btcomprobar(View view) {
-
-        int aleatorio = Integer.parseInt(String.valueOf(tvAlea.getText()));
-
-
-//        || aleatorio % 3==0 || aleatorio % 5 == 0 || aleatorio % 10 == 0
-        boolean esDivisible = true;
-
-        do {
-            if (aleatorio % 2 == 0) {
-                esDivisible = true;
-                if (check_2.isChecked() && esDivisible == true) {
-                    tvComprobacion.setText("Correcto");
-                    tvComprobacion.setTextColor(Color.GREEN);
-                    OK.setVisibility(View.VISIBLE);
-                    KO.setVisibility(View.INVISIBLE);
-                } else {
-                    tvComprobacion.setText("ERROR");
-                    tvComprobacion.setTextColor(Color.RED);
-                    OK.setVisibility(View.INVISIBLE);
-                    KO.setVisibility(View.VISIBLE);
-                }
-            }
-            if (aleatorio % 3 == 0) {
-                esDivisible = true;
-                if (check_3.isChecked() && esDivisible == true) {
-                    tvComprobacion.setText("Correcto");
-                    tvComprobacion.setTextColor(Color.GREEN);
-                    OK.setVisibility(View.VISIBLE);
-                    KO.setVisibility(View.INVISIBLE);
-                } else {
-                    tvComprobacion.setText("ERROR");
-                    tvComprobacion.setTextColor(Color.RED);
-                    OK.setVisibility(View.INVISIBLE);
-                    KO.setVisibility(View.VISIBLE);
-                }
-            }
-            if (aleatorio % 5 == 0) {
-                esDivisible = true;
-                if (check_5.isChecked() && esDivisible == true) {
-                    tvComprobacion.setText("Correcto");
-                    tvComprobacion.setTextColor(Color.GREEN);
-                    OK.setVisibility(View.VISIBLE);
-                    KO.setVisibility(View.INVISIBLE);
-                } else {
-                    tvComprobacion.setText("ERROR");
-                    tvComprobacion.setTextColor(Color.RED);
-                    OK.setVisibility(View.INVISIBLE);
-                    KO.setVisibility(View.VISIBLE);
-                }
-            }
-            if (aleatorio % 10 == 0) {
-                esDivisible = true;
-                if (check_10.isChecked() && esDivisible == true) {
-                    tvComprobacion.setText("Correcto");
-                    tvComprobacion.setTextColor(Color.GREEN);
-                    OK.setVisibility(View.VISIBLE);
-                    KO.setVisibility(View.INVISIBLE);
-                } else {
-                    tvComprobacion.setText("ERROR");
-                    tvComprobacion.setTextColor(Color.RED);
-                    OK.setVisibility(View.INVISIBLE);
-                    KO.setVisibility(View.VISIBLE);
-                }
-            }
-            if (aleatorio % 2 != 0 && aleatorio % 3 != 0 && aleatorio % 5 != 0 && aleatorio % 10 != 0) {
-                if (check_nodiv.isChecked()) {
-                    tvComprobacion.setText("Correcto");
-                    tvComprobacion.setTextColor(Color.GREEN);
-                    OK.setVisibility(View.VISIBLE);
-                    KO.setVisibility(View.INVISIBLE);
-                    Toast.makeText(this, "no es divisible entre ninguno", Toast.LENGTH_SHORT).show();
-                } else {
-                    tvComprobacion.setText("ERROR");
-                    tvComprobacion.setTextColor(Color.RED);
-                    OK.setVisibility(View.INVISIBLE);
-                    KO.setVisibility(View.VISIBLE);
-                }
-            }
-        } while (esDivisible != true);
-
-
-        if (!check_nodiv.isChecked() && !check_2.isChecked() && !check_3.isChecked() && !check_5.isChecked() && !check_10.isChecked()) {
-            Toast.makeText(this, "Debe escoger una de las opciones", Toast.LENGTH_SHORT).show();
-        }
-//
+        numeroAleatorio=String.valueOf(aleatorio);
+        tvAlea.setText(numeroAleatorio);
     }
 }
